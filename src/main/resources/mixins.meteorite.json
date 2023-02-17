@@ -1,0 +1,12 @@
+{
+  "compatibilityLevel": "JAVA_8",
+  "package": "dev.lasm.meteorite.mixin",
+  "refmap": "refmap.meteorite.json",
+  "mixins": [
+    "MixinAnvilChunkLoader"
+  ],
+  "client": [],
+  "server": [
+
+  ]
+}
