@@ -75,6 +75,7 @@ dependencies {
     annotationProcessor 'com.github.bsideup.jabel:jabel-javac-plugin:1.0.0'
     compileOnly 'com.github.bsideup.jabel:jabel-javac-plugin:1.0.0'
 
+    annotationProcessor 'org.spongepowered:mixin:0.8.5:processor'
     implementation 'org.spongepowered:mixin:0.8.5'
 
     // https://mvnrepository.com/artifact/org.rocksdb/rocksdbjni
@@ -109,6 +110,8 @@ mixin {
 }
 
 jar {
+    duplicatesStrategy = DuplicatesStrategy.WARN
+
     from {
         configurations.embed.collect { it.isDirectory() ? it : zipTree(it) }
     } {

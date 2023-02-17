@@ -62,7 +62,7 @@ public abstract class MixinAnvilChunkLoader implements DatabaseProvider {
     private DataFixer fixer;
 
 
-    @Inject(method = "loadChunk__Async", at = @At("HEAD"), cancellable = true)
+    @Inject(method = "loadChunk__Async", at = @At("HEAD"), cancellable = true, remap = false)
     public void onLoadChunk(World worldIn, int x, int z, CallbackInfoReturnable<Object[]> ci) throws IOException {
         ChunkPos chunkpos = new ChunkPos(x, z);
         NBTTagCompound nbttagcompound = chunksToSave.get(chunkpos);
@@ -91,7 +91,7 @@ public abstract class MixinAnvilChunkLoader implements DatabaseProvider {
         ci.cancel();
     }
 
-    @Shadow
+    @Shadow(remap = false)
     protected abstract Object[] checkedReadChunkFromNBT__Async(World worldIn, int x, int z, NBTTagCompound nbttagcompound);
 
     @Inject(method = "flush", at = @At("RETURN"))
